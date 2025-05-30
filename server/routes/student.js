@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Student = require('../models/student');
+const Student = require('../models/Student');
 
 // Middleware to check login
 function isAuthenticated(req, res, next) {

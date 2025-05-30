@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const Student = require('../models/Student');
+const Student = require('../models/student');
 
 // REGISTER (only admin should register students normally)
 router.post('/register', async (req, res) => {
