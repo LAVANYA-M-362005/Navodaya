@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
     name: String,
-    email: { type: String, unique: true },
-    password: String,
-    rollNumber: String,
-    class: String,
+    email: String,
+    password: String
 });
 
-module.exports = mongoose.model('student', studentSchema);
+// ✅ Fix: Check if model already exists
+module.exports = mongoose.models.Student || mongoose.model('Student', studentSchema);

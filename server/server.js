@@ -5,14 +5,27 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+
+// ✅ CORS for localhost + Vercel frontend
+const allowedOrigins = ['http://localhost:3000', 'https://navodaya-phi.vercel.app'];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
+
 app.use(express.json());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // use true only with HTTPS
+    cookie: { secure: false } // true if using HTTPS in production
 }));
 
 mongoose.connect(process.env.MONGO_URI)

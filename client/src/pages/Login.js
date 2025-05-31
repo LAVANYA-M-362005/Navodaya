@@ -6,7 +6,7 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        const res = await fetch('http://localhost:5000/api/auth/login', {
+        const res = await fetch('https://navodaya-website.onrender.com', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
