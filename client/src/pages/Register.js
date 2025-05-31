@@ -5,15 +5,24 @@ function Register() {
     const [form, setForm] = useState({ name: '', email: '', password: '', class: '', rollNumber: '' });
 
     const handleRegister = async () => {
-        const res = await fetch('https://navodaya-website.onrender.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(form),
-        });
+        try {
+            const res = await fetch('https://navodaya-website.onrender.com/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form),
+            });
 
-        const data = await res.json();
-        alert(data.message || data.error);
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.error || 'Registration failed');
+            }
+
+            alert(data.message);
+        } catch (err) {
+            alert(err.message);
+        }
     };
+
 
     return (
         <div className="container">
