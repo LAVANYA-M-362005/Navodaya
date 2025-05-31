@@ -5,7 +5,7 @@ function Dashboard() {
     const [student, setStudent] = useState(null);
 
     useEffect(() => {
-        fetch('https://navodaya-website.onrender.com', {
+        fetch('https://navodaya-website.onrender.com/api/auth/Dashboard', {
             credentials: 'include',
         })
             .then(res => res.json())

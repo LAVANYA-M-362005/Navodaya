@@ -6,7 +6,7 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            const res = await fetch('https://navodaya-website.onrender.com/register', {
+            const res = await fetch('https://navodaya-website.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),

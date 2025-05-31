@@ -5,7 +5,7 @@ function Profile() {
     const [student, setStudent] = useState(null);
 
     useEffect(() => {
-        fetch('https://navodaya-website.onrender.com', {
+        fetch('https://navodaya-website.onrender.com/api/auth/Profile', {
             credentials: 'include',
         })
             .then(res => res.json())
